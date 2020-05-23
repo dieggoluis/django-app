@@ -26,6 +26,7 @@ SECRET_KEY = ')-fejcy6rud$bloh=3ht$e&0l#y@)5*lsar9-4+5d=ezd1)@6%'
 DEBUG = True
 
 ALLOWED_HOSTS = ["127.0.0.1"]
+# ALLOWED_HOSTS = ["mydomain.com"]
 
 
 # Application definition
