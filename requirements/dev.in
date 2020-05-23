@@ -1,0 +1,2 @@
+pip-tools==5.1.2
+pip-compile-multi==1.5.9
