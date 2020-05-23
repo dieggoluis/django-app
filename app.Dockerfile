@@ -15,10 +15,7 @@ COPY web/ .
 # migrade db
 RUN python manage.py migrate
 
-# collect static files
-RUN python manage.py collectstatic --no-input --clear
-
 # expose port 8000
 EXPOSE 8000
 
-CMD ["gunicorn", "photo_website.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["gunicorn", "web.wsgi:application", "--bind", "0.0.0.0:8000"]

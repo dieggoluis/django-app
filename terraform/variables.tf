@@ -42,7 +42,7 @@ variable "public_key_path" {
 }
 
 variable "security_group_name" {
-  default = "allow-ssh"
+  default = "web-server"
 }
 
 variable "instance_type" {

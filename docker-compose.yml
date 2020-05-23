@@ -8,14 +8,13 @@ services:
         image: django-app-nginx
         ports:
             - 80:80
-        # depends_on:
-        #     - website
+        depends_on:
+            - webapp
 
-    # website:
-    #     build: .
-    #     command: gunicorn photo_website.wsgi:application --bind 0.0.0.0:8000
-    #     # volumes:
-    #     #     - static_volume:/photo-portfolio/staticfiles
-    #     #     - media_volume:/photo-portfolio/mediafiles
-    #     expose:
-    #       - 8000
+    webapp:
+        build:
+            context: .
+            dockerfile: app.Dockerfile
+        image: django-app-web
+        expose:
+          - 8000

@@ -22,10 +22,9 @@ module "vpc" {
 }
 
 # security group
-resource "aws_security_group" "allow_ssh" {
-  vpc_id      = module.vpc.vpc_id
-  name        = var.security_group_name
-  description = "security group that allows ssh and all egress traffic"
+resource "aws_security_group" "web_server" {
+  vpc_id = module.vpc.vpc_id
+  name   = var.security_group_name
 
   egress {
     from_port   = 0
@@ -41,9 +40,16 @@ resource "aws_security_group" "allow_ssh" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   tags = {
     Terraform   = "true"
-    Name        = "security-group-allow-ssh"
+    Name        = "security-group-web-server"
     Environment = var.environment
   }
 }
@@ -61,7 +67,7 @@ resource "aws_instance" "django_app" {
   key_name      = aws_key_pair.keys.id
 
   subnet_id       = module.vpc.public_subnets[0]
-  security_groups = [aws_security_group.allow_ssh.id]
+  security_groups = [aws_security_group.web_server.id]
 
   provisioner "remote-exec" {
     script = var.launch_config_path
