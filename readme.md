@@ -1,1 +1,1 @@
-Django app template deploying on AWS EC2 using Docker and Terraform
+Simple example of Django app on AWS EC2 using Docker and Terraform
