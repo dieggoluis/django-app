@@ -77,7 +77,7 @@ resource "aws_instance" "django_app" {
       user        = "ec2-user"
       private_key = file(var.private_key_path)
       agent       = false
-      timeout     = "2m"
+      timeout     = "10m"
       host        = self.public_ip
     }
   }
