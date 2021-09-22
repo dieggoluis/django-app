@@ -5,11 +5,16 @@
 #
 #    pip-compile-multi
 #
-asgiref==3.2.7            # via django
-django==3.0.6             # via -r common.in
-gunicorn==20.0.4          # via -r common.in
-pytz==2020.1              # via django
-sqlparse==0.3.1           # via django
+asgiref==3.4.1
+    # via django
+django==3.1.13
+    # via -r common.in
+gunicorn==20.0.4
+    # via -r common.in
+pytz==2020.1
+    # via django
+sqlparse==0.3.1
+    # via django
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
